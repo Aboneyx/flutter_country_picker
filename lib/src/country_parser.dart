@@ -8,10 +8,12 @@ import 'res/strings/bg.dart';
 import 'res/strings/ca.dart';
 import 'res/strings/cn.dart';
 import 'res/strings/cs.dart';
+import 'res/strings/da.dart';
 import 'res/strings/de.dart';
 import 'res/strings/en.dart';
 import 'res/strings/es.dart';
 import 'res/strings/et.dart';
+import 'res/strings/fa.dart';
 import 'res/strings/fr.dart';
 import 'res/strings/gr.dart';
 import 'res/strings/hr.dart';
@@ -137,7 +139,7 @@ class CountryParser {
   /// Returns a country that matches the [countryCode] (e164_cc).
   static Country _getFromPhoneCode(String phoneCode) {
     return Country.from(
-      json: countryCodes.singleWhere(
+      json: countryCodes.firstWhere(
         (Map<String, dynamic> c) => c['e164_cc'] == phoneCode,
       ),
     );
@@ -283,12 +285,16 @@ class CountryParser {
         return ko;
       case 'cs':
         return cs;
+      case 'da':
+        return da;
       case 'ca':
         return ca;
       case 'he':
         return he;
       case 'kk':
         return kz;
+      case 'fa':
+        return fa;
       case 'en':
       default:
         return en;
@@ -331,9 +337,11 @@ class CountryParser {
       const Locale('ja'),
       const Locale('ko'),
       const Locale('cs'),
+      const Locale('da'),
       const Locale('ca'),
       const Locale('he'),
       const Locale('kk'),
+      const Locale('fa'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ]..removeWhere((Locale l) => exclude.contains(l));

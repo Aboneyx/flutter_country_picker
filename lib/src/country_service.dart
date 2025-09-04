@@ -15,18 +15,24 @@ class CountryService {
 
   static final List<Map<String, dynamic>> getCountryCodes = countryCodes;
 
-  ///Returns the first country that mach the given code.
+  ///Returns the first country that match the given code.
   Country? findByCode(String? code) {
     final uppercaseCode = code?.toUpperCase();
     return _countries.firstWhereOrNull((country) => country.countryCode == uppercaseCode);
   }
 
-  ///Returns the first country that mach the given name.
+  ///Returns the first country that match the given name.
   Country? findByName(String? name) {
     return _countries.firstWhereOrNull((country) => country.name == name);
   }
 
-  ///Returns a list with all the countries that mach the given codes list.
+  ///Returns the first country that match the given phone code.
+  Country? findByPhoneCode(String? phoneCode) {
+    return _countries
+        .firstWhereOrNull((country) => country.phoneCode == phoneCode);
+  }
+
+  ///Returns a list with all the countries that match the given codes list.
   List<Country> findCountriesByCode(List<String> codes) {
     final List<String> _codes = codes.map((code) => code.toUpperCase()).toList();
     final List<Country> countries = [];
